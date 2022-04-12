@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import CovidMap from "./components/Map";
+import { useEffect, useState } from "react";
+import LoadCountriesTask from "./tasks/LoadCountries";
+import legendItems from "./entities/LegendItems";
+import Legend from "./components/Legend";
 
-function App() {
+export default function App() {
+  const [countries, setCountries] = useState([]);
+  const legendItemsReverse = [...legendItems].reverse();
+
+  const load = () => {
+    const loadCountriesTask = new LoadCountriesTask();
+    loadCountriesTask.load((countries) => setCountries(countries));
+  };
+
+  useEffect(load, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-content">
+      <div className="container-fluid">
+        <div className="mt-5">
+          <h1 className="text-center">Covid Daily Cases</h1>
+
+          <div className="container-fluid mt-5">
+            <div className="row">
+              <div className="col-12 col-md-8">
+                {countries.length === 0 ? (
+                  <h3>Loading...</h3>
+                ) : (
+                  <div>
+                    <h3>Total cases in the world</h3>
+
+                    <CovidMap countries={countries} />
+
+                    <Legend legendItems={legendItemsReverse} />
+                  </div>
+                )}
+              </div>
+
+              <div className="col-12 col-md-4 ">
+                <h3>Teste</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-export default App;
