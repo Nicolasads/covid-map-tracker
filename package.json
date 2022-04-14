@@ -5,7 +5,7 @@
   "engines": {
     "node": "16.x"
   },
-  "homepage": "gh-pages",
+  "homepage": "github-page/",
   "dependencies": {
     "@popperjs/core": "^2.11.5",
     "@supabase/supabase-js": "^1.33.3",
