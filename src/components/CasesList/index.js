@@ -14,22 +14,25 @@ function CasesList() {
     return { from, to };
   };
 
-  const fetchCases = async (page) => {
-    const { from, to } = getPagination(page, 10);
-
-    const getData = await supabase.from("covid-cases").select().range(from, to);
-    setCases(getData.data);
-    console.log("cases", getData.data);
-
-    return {
-      props: {
-        data: getData.data,
-        page: +page,
-      },
-    };
-  };
-
   useEffect(() => {
+    const fetchCases = async (page) => {
+      const { from, to } = getPagination(page, 10);
+
+      const getData = await supabase
+        .from("covid-cases")
+        .select()
+        .range(from, to);
+      setCases(getData.data);
+      console.log("cases", getData.data);
+
+      return {
+        props: {
+          data: getData.data,
+          page: +page,
+        },
+      };
+    };
+
     fetchCases();
   }, []);
 
