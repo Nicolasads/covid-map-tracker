@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/github-page/static/css/main.4b29359d.css",
-    "main.js": "/github-page/static/js/main.2a97aa13.js",
-    "index.html": "/github-page/index.html",
-    "main.4b29359d.css.map": "/github-page/static/css/main.4b29359d.css.map",
-    "main.2a97aa13.js.map": "/github-page/static/js/main.2a97aa13.js.map"
+    "main.css": "/covid-map-tracker/static/css/main.4b29359d.css",
+    "main.js": "/covid-map-tracker/static/js/main.2a97aa13.js",
+    "index.html": "/covid-map-tracker/index.html",
+    "main.4b29359d.css.map": "/covid-map-tracker/static/css/main.4b29359d.css.map",
+    "main.2a97aa13.js.map": "/covid-map-tracker/static/js/main.2a97aa13.js.map"
   },
   "entrypoints": [
     "static/css/main.4b29359d.css",
