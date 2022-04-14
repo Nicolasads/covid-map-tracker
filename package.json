@@ -2,6 +2,9 @@
   "name": "covid-tracker",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@popperjs/core": "^2.11.5",
     "@supabase/supabase-js": "^1.33.3",
