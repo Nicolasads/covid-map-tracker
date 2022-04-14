@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LoadCountriesTask from "./tasks/LoadCountries";
 import legendItems from "./entities/LegendItems";
 import Legend from "./components/Legend";
+import Statistics from "./components/Statistics";
 
 export default function App() {
   const [countries, setCountries] = useState([]);
@@ -36,10 +37,7 @@ export default function App() {
                   </div>
                 )}
               </div>
-
-              <div className="col-12 col-md-4 ">
-                <h3>Teste</h3>
-              </div>
+              <Statistics cases={countries} />
             </div>
           </div>
         </div>

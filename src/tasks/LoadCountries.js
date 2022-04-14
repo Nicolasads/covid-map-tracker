@@ -27,12 +27,18 @@ class LoadCountriesTask {
 
       country.properties.confirmed = 0;
       country.properties.confirmedText = 0;
+      country.properties.deaths = 0;
+      country.properties.deathsText = 0;
 
       if (covidCountry != null) {
         let confirmed = Number(covidCountry.Confirmed);
         country.properties.confirmed = confirmed;
         country.properties.confirmedText =
           this.formatNumberWithCommas(confirmed);
+
+        let deaths = Number(covidCountry.Deaths);
+        country.properties.deaths = deaths;
+        country.properties.deathsText = this.formatNumberWithCommas(deaths);
       }
 
       this.#setCountrycolor(country);
