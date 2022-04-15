@@ -29,7 +29,6 @@ function CasesList() {
       } else {
         setCases((c) => c.concat(getData.data));
       }
-      console.log("cases", getData.data);
 
       return {
         props: {
@@ -45,7 +44,6 @@ function CasesList() {
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
-        console.log("rodando");
         setPageNumber((currentPageInside) => currentPageInside + 1);
       }
     });
