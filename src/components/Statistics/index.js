@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CasesList from "../CasesList";
 import Chart from "../Chart";
 
 // import { Container } from './styles';
@@ -48,8 +47,6 @@ function Statistics({ cases }) {
       </div>
 
       <Chart cases={cases} />
-
-      <CasesList />
     </div>
   );
 }

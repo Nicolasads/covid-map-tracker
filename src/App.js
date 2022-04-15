@@ -4,6 +4,7 @@ import LoadCountriesTask from "./tasks/LoadCountries";
 import legendItems from "./entities/LegendItems";
 import Legend from "./components/Legend";
 import Statistics from "./components/Statistics";
+import CasesList from "./components/CasesList";
 
 export default function App() {
   const [countries, setCountries] = useState([]);
@@ -19,7 +20,7 @@ export default function App() {
   return (
     <div className="main-content">
       <div className="container-fluid">
-        <div className="mt-5">
+        <div>
           <h1 className="text-center">Covid Daily Cases</h1>
 
           <div className="container-fluid mt-5">
@@ -34,6 +35,8 @@ export default function App() {
                     <CovidMap countries={countries} />
 
                     <Legend legendItems={legendItemsReverse} />
+
+                    <CasesList />
                   </div>
                 )}
               </div>

@@ -5,6 +5,7 @@ import { supabase } from "../../services/api";
 
 function CasesList() {
   const [cases, setCases] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const getPagination = (page, size) => {
     const limit = size ? +size : 3;
@@ -22,7 +23,12 @@ function CasesList() {
         .from("covid-cases")
         .select()
         .range(from, to);
-      setCases(getData.data);
+
+      if (pageNumber === 1) {
+        setCases(getData.data);
+      } else {
+        setCases((c) => c.concat(getData.data));
+      }
       console.log("cases", getData.data);
 
       return {
@@ -33,17 +39,30 @@ function CasesList() {
       };
     };
 
-    fetchCases();
+    fetchCases(pageNumber);
+  }, [pageNumber]);
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        console.log("rodando");
+        setPageNumber((currentPageInside) => currentPageInside + 1);
+      }
+    });
+
+    intersectionObserver.observe(document.querySelector("#observer"));
+
+    return () => intersectionObserver.disconnect();
   }, []);
 
   return (
-    <div className="card mt-3">
+    <div className="card my-4">
       <div className="card-body">
         <h5 className="card-title">Case history</h5>
 
         <div
           className="mt-4"
-          style={{ overflowY: "scroll", maxHeight: "25vh" }}
+          style={{ overflowY: "scroll", maxHeight: "35vh" }}
         >
           <table className="table table-responsive table-striped">
             <thead>
@@ -67,6 +86,9 @@ function CasesList() {
                   <td>{cases.num_sequences_total} </td>
                 </tr>
               ))}
+              <tr id="observer">
+                <td></td>
+              </tr>
             </tbody>
           </table>
         </div>
